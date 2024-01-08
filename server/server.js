@@ -4,6 +4,13 @@ const app = express();
 const PORT = process.env.SERVER_PORT;
 const pool = require('./queries');
 
+// Middleware
+function logParams(req, res, next) {
+    console.log('Params:');
+    console.log(req.params);
+    next();
+}
+
 // GET routes
 
 // do i need async await?
@@ -16,7 +23,7 @@ app.get('/todos', async (req, res) => {
     }
 });
 
-app.get('/todos/:userId', async (req, res) => {
+app.get('/todos/:userId', logParams, async (req, res) => {
     try {
         const { user_id } = req.params;
         const response = await pool.query(
