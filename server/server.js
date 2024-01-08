@@ -25,14 +25,14 @@ app.get('/todos', async (req, res) => {
 
 app.get('/todos/:userId', logParams, async (req, res) => {
     try {
-        const { user_id } = req.params;
+        const { userId } = req.params;
         const response = await pool.query(
-            'SELECT * FROM todo WHERE user_id = $1;',
-            [user_id]
+            'SELECT * FROM todo WHERE user_id = $1',
+            [userId]
         );
         res.status(200).json(response.rows);
     } catch (error) {
-        console.error(error.message);
+        console.error(`ERROR: ${error.message}`);
     }
 });
 
