@@ -4,9 +4,11 @@ const app = express();
 const PORT = process.env.SERVER_PORT;
 const pool = require('./queries');
 
-app.get('/', async (res, req) => {
+// do i need async await?
+app.get('/', async (req, res) => {
     try {
-        console.log('get!');
+        const response = await pool.query('SELECT * FROM todo, todo_user;');
+        res.status(200).json(response.rows);
     } catch (error) {
         console.error(error.message);
     }
