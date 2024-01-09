@@ -1,5 +1,10 @@
 import React from 'react';
+import { TodoBtnProps } from './TodoItem';
 
-export default function DeleteTodoBtn() {
-    return <button className="todo-btn delete-btn">DeleteTodoBtn</button>;
+export default function DeleteTodoBtn({ id }: TodoBtnProps) {
+    return (
+        <button className="todo-btn delete-btn" onClick={() => deleteTodo(id)}>
+            DeleteTodoBtn
+        </button>
+    );
 }

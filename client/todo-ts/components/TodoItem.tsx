@@ -7,11 +7,15 @@ interface TodoItemProps {
     todo: {
         todo_id: number;
         name: string;
-        description: string;
+        description?: string;
         created_at: string;
         due_date: string;
         user_id: number;
     };
+}
+
+export interface TodoBtnProps {
+    id: number;
 }
 
 export default function TodoItem({ todo }: TodoItemProps) {
@@ -20,12 +24,14 @@ export default function TodoItem({ todo }: TodoItemProps) {
             <div className="todo-header">
                 <h2 className="todo-title">{todo.name}</h2>
                 <div className="todo-btn-container">
-                    <EditTodoBtn />
-                    <DeleteTodoBtn />
+                    <EditTodoBtn id={todo.todo_id} />
+                    <DeleteTodoBtn id={todo.todo_id} />
                 </div>
             </div>
             <div className="todo-info">
-                <p className="todo-desc">{todo.description}</p>
+                {todo.description && (
+                    <p className="todo-desc">{todo.description}</p>
+                )}
                 <p className="due-date">Due in X days</p>
             </div>
         </div>
