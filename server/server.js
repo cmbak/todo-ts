@@ -43,11 +43,11 @@ app.get('/todos/:userId', logParams, async (req, res) => {
 app.delete('/todos/:todoId', logParams, async (req, res) => {
     try {
         const { todoId } = req.params;
+
         const response = await pool.query(
             'DELETE FROM todo WHERE todo_id = $1;',
             [todoId]
         );
-        res.status(200).json(response);
         // response.rowCount
     } catch (error) {
         console.error(`ERROR: ${error.message}`);

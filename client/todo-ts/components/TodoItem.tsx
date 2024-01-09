@@ -14,18 +14,30 @@ interface TodoItemProps {
     };
 }
 
-export interface TodoBtnProps {
-    id: number;
+interface TodoBtnProps {
+    onClick: () => void;
 }
 
 export default function TodoItem({ todo }: TodoItemProps) {
+    async function deleteTodo(id: number) {
+        try {
+            await fetch(`http://localhost:3000/todos/${id}`, {
+                method: 'DELETE',
+            });
+        } catch (error) {
+            if (error instanceof Error) {
+                console.log(error.message);
+            }
+        }
+    }
+
     return (
         <div className="todo-item">
             <div className="todo-header">
                 <h2 className="todo-title">{todo.name}</h2>
                 <div className="todo-btn-container">
-                    <EditTodoBtn id={todo.todo_id} />
-                    <DeleteTodoBtn id={todo.todo_id} />
+                    <EditTodoBtn />
+                    <DeleteTodoBtn onClick={() => deleteTodo(todo.todo_id)} />
                 </div>
             </div>
             <div className="todo-info">
