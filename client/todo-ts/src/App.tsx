@@ -3,7 +3,7 @@ import TodoItem from '../components/TodoItem';
 
 // TODO Check if this is the correct way to do in ts
 
-interface Todo {
+export interface Todo {
     todo_id: number;
     name: string;
     description: string;
@@ -17,7 +17,7 @@ function App() {
 
     // TODO does this need to be async?
     async function getTodos() {
-        // get req to localhost....
+        console.log('getTodos called');
         try {
             const response = await fetch('http://localhost:3000/todos/'); // TODO correct way of using it
             const result = await response.json();
