@@ -1,5 +1,5 @@
 import React from 'react';
 
 export default function DeleteTodoBtn() {
-    return <button>DeleteTodoBtn</button>;
+    return <button className="todo-btn delete-btn">DeleteTodoBtn</button>;
 }
