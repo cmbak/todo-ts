@@ -38,9 +38,11 @@ function App() {
     return (
         <div className="container">
             <h1 id="title">Todo</h1>
-            {todos.map((todo) => {
-                return <TodoItem key={todo.todo_id} />;
-            })}
+            <div className="todo-container">
+                {todos.map((todo) => (
+                    <TodoItem key={todo.todo_id} todo={todo} />
+                ))}
+            </div>
         </div>
     );
 }

@@ -21,10 +21,24 @@ body {
   font-size: 3rem;
 }
 
+/* Todo container styling */
+.todo-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 /* Todo styling */
 .todo-item {
   background-color: rgb(71, 78, 89);
   padding: 1rem;
+  transition: .2s;
+  cursor: pointer;
+  /* width: 100%; */
+}
+
+.todo-item:hover {
+  transform: scale(1.03);
 }
 
 .todo-header {
@@ -39,6 +53,10 @@ body {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
+}
+
+.todo-desc {
+  color: rgb(186, 186, 186);
 }
 
 /* Todo button styling */
