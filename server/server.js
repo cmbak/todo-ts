@@ -3,6 +3,9 @@ const express = require('express');
 const app = express();
 const PORT = process.env.SERVER_PORT;
 const pool = require('./queries');
+const cors = require('cors');
+
+app.use(cors());
 
 // Middleware
 function logParams(req, res, next) {
@@ -13,7 +16,7 @@ function logParams(req, res, next) {
 
 // GET routes
 
-// do i need async await?
+// do i need async await? trycatch for pool.query?
 app.get('/todos', async (req, res) => {
     try {
         const response = await pool.query('SELECT * FROM todo;');
