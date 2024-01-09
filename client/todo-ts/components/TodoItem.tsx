@@ -11,6 +11,8 @@ export default function TodoItem() {
                     <EditTodoBtn />
                     <DeleteTodoBtn />
                 </div>
+            </div>
+            <div className="todo-info">
                 <p className="todo-desc">Todo Description</p>
                 <p className="due-date">Due in X days</p>
             </div>
