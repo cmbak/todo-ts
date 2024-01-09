@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import TodoItem from '../components/TodoItem';
 
 function App() {
     return (
-        <>
-            <h1>Hello</h1>
-        </>
+        <div className="container">
+            <h1 id="title">Todo</h1>
+            <TodoItem />
+        </div>
     );
 }
 
