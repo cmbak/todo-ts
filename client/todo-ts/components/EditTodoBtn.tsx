@@ -9,11 +9,9 @@ export default function EditTodoBtn({ todo }: TodoBtnProps) {
     function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
         event.preventDefault();
 
-        // Should update todo in db
-        // PUT
         fetch(`http://localhost:3000/todos/${todo.todo_id}`, {
             method: 'PUT',
-            headers: { ContentType: 'application/json' },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 name: name,
                 description: description,

@@ -6,10 +6,7 @@ const pool = require('./queries');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-// app.use(cors());
-app.use(cors());
-
-app.use(bodyParser.json());
+app.use(cors(), express.json());
 
 // Middleware
 function logParams(req, res, next) {
@@ -63,22 +60,16 @@ app.delete('/todos/:todoId', logParams, async (req, res) => {
 // PUT
 app.put('/todos/:todoId', logParams, async (req, res) => {
     try {
-        const { todoId } = req.params;
-
-        // app.use(express.json());
-        // const { name, description } = req.body;
-        console.log(req.body);
-        // const response = await pool.query(
-        //     'UPDATE todo SET name = $1, description = $2 WHERE todo_id = $3',
-        //     [name, description, todoId]
-        // );
-        res.json('beepboop');
+        const todoId = Number(req.params.todoId);
+        const { name, description } = req.body;
+        const response = await pool.query(
+            'UPDATE todo SET name = $1, description = $2 WHERE todo_id = $3',
+            [name, description, todoId]
+        );
+        console.log(`Todo with id ${todoId} updated`);
     } catch (error) {
         console.error(`ERROR: ${error.message}`);
     }
-    console.log('Hiyahh');
-    // Find the todo with the id
-    // set old values to new values passed in
 });
 
 app.listen(PORT, () => {
