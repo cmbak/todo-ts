@@ -67,7 +67,7 @@ app.put('/todos/:todoId', logParams, async (req, res) => {
 
         // app.use(express.json());
         // const { name, description } = req.body;
-        console.log(JSON.parse(req.body));
+        console.log(req.body);
         // const response = await pool.query(
         //     'UPDATE todo SET name = $1, description = $2 WHERE todo_id = $3',
         //     [name, description, todoId]

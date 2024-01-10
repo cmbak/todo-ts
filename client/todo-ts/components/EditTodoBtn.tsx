@@ -1,21 +1,13 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import { TodoBtnProps } from './TodoItem';
 
 export default function EditTodoBtn({ todo }: TodoBtnProps) {
-    const nameRef = useRef<HTMLInputElement | null>(null);
-    const descRef = useRef<HTMLInputElement | null>(null);
+    const [name, setName] = useState(todo.name);
+    const [description, setDescription] = useState(todo.description || ''); // Need ''?
     // todo date?
 
     function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
         event.preventDefault();
-        // console.log(event.currentTarget);
-        console.log(nameRef.current?.value);
-        console.log(descRef.current?.value);
-
-        if (nameRef.current) {
-            // nameRef.current.value = todo.name;
-            console.log(`Test ${nameRef.current.value}`);
-        }
 
         // Should update todo in db
         // PUT
@@ -23,8 +15,8 @@ export default function EditTodoBtn({ todo }: TodoBtnProps) {
             method: 'PUT',
             headers: { ContentType: 'application/json' },
             body: JSON.stringify({
-                name: nameRef.current?.value,
-                description: descRef.current?.value,
+                name: name,
+                description: description,
             }),
         });
     }
@@ -37,14 +29,14 @@ export default function EditTodoBtn({ todo }: TodoBtnProps) {
                     <input
                         type="text"
                         name="name"
-                        defaultValue={todo.name}
-                        ref={nameRef}
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                     />
                     <input
                         type="text"
                         name="description"
-                        defaultValue={todo.description}
-                        ref={descRef}
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
                     />
                     <button type="submit" className="edit-btn">
                         Edit Todo
