@@ -2,16 +2,15 @@ import React, { useRef } from 'react';
 import { TodoBtnProps } from './TodoItem';
 
 export default function EditTodoBtn({ todo }: TodoBtnProps) {
-    const nameRef = useRef(null); // could this be todo.name?
-    const descRef = useRef(null);
+    const nameRef = useRef<HTMLInputElement | null>(null);
+    const descRef = useRef<HTMLInputElement | null>(null);
     // todo date?
 
     function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
         event.preventDefault();
-        console.log(event.currentTarget);
-        console.log(nameRef);
-        console.log(descRef);
-        // Get values from form! - useRef? useState?
+        // console.log(event.currentTarget);
+        console.log(nameRef.current?.value);
+        console.log(descRef.current?.value);
     }
 
     return (
