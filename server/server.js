@@ -41,6 +41,7 @@ app.get('/todos/:userId', logParams, async (req, res) => {
 
 // DELETE routes
 app.delete('/todos/:todoId', logParams, async (req, res) => {
+    console.log('called');
     try {
         const { todoId } = req.params;
 
