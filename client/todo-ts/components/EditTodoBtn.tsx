@@ -11,6 +11,22 @@ export default function EditTodoBtn({ todo }: TodoBtnProps) {
         // console.log(event.currentTarget);
         console.log(nameRef.current?.value);
         console.log(descRef.current?.value);
+
+        if (nameRef.current) {
+            // nameRef.current.value = todo.name;
+            console.log(`Test ${nameRef.current.value}`);
+        }
+
+        // Should update todo in db
+        // PUT
+        fetch(`http://localhost:3000/todos/${todo.todo_id}`, {
+            method: 'PUT',
+            headers: { ContentType: 'application/json' },
+            body: JSON.stringify({
+                name: nameRef.current?.value,
+                description: descRef.current?.value,
+            }),
+        });
     }
 
     return (
