@@ -59,8 +59,9 @@ export default function CreateTodo() {
                 <input
                     type="date"
                     name="date"
+                    value={dueDate}
+                    onChange={(e) => setDueDate(e.target.value)}
                     min={getCurrentDate()}
-                    defaultValue={getCurrentDate()}
                 />
                 <button type="submit" id="create-todo-submit">
                     Create Todo
