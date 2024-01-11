@@ -39,19 +39,29 @@ export default function CreateTodo() {
                 action=""
                 onSubmit={(e) => handleSubmit(e)}
             >
+                <label htmlFor="name">Title</label>
                 <input
+                    name="name"
                     type="text"
-                    placeholder="Todo name"
+                    placeholder="Finish Work"
                     required
                     onChange={(e) => setName(e.target.value)}
                 />
+                <label htmlFor="description">Description</label>
                 <input
+                    name="description"
                     type="text"
-                    placeholder="Todo Description"
+                    placeholder="Finish notes from today..."
                     onChange={(e) => setDescription(e.target.value)}
                 />
                 {/* Change to text area? make sure that db char limit*/}
-                <input type="date" name="date" min={getCurrentDate()} />
+                <label htmlFor="date">Due Date</label>
+                <input
+                    type="date"
+                    name="date"
+                    min={getCurrentDate()}
+                    defaultValue={getCurrentDate()}
+                />
                 <button type="submit" id="create-todo-submit">
                     Create Todo
                 </button>
