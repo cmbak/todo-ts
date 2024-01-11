@@ -27,8 +27,6 @@ export default function CreateTodo() {
                 dueDate: dueDate,
             }),
         });
-
-        setFormVisible(false);
     }
 
     function handleClick() {
@@ -47,7 +45,11 @@ export default function CreateTodo() {
                 <form
                     id="create-todo-form"
                     action=""
-                    onSubmit={(e) => handleSubmit(e)}
+                    onSubmit={(e) => {
+                        handleSubmit(e);
+                        setFormVisible(false);
+                        setShowBtnVisible(true);
+                    }}
                 >
                     <label htmlFor="name">Title</label>
                     <input
