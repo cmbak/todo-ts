@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Todo } from '../src/App';
 
 interface EditModalProps {
     todo: {
@@ -21,19 +20,21 @@ export default function EditModal({ todo }: EditModalProps) {
         event.preventDefault();
 
         console.log(`Edit Todo ${name} ${description}`);
+        await fetch(`http://localhost:3000/todos/${todo.todo_id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                name: name,
+                description: description,
+            }),
+        });
 
-        // await fetch(`http://localhost:3000/todos/${todo.todo_id}`, {
-        //     method: 'PUT',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify({
-        //         name: name,
-        //         description: description,
-        //     }),
-        // });
+        // closeModal()
     }
 
     function handleCancelClick() {
         console.log('Close modal');
+        // closeModal()
     }
 
     return (
