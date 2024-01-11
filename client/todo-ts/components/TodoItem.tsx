@@ -1,7 +1,6 @@
 import React from 'react';
-import EditTodoBtn from '../components/EditTodoBtn';
 import DeleteTodoBtn from '../components/DeleteTodoBtn';
-import { Todo } from '../src/App';
+import EditModal from './EditModal';
 
 // TODO is this the correct way to do
 interface TodoItemProps {
@@ -33,7 +32,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
             <div className="todo-header">
                 <h2 className="todo-title">{todo.name}</h2>
                 <div className="todo-btn-container">
-                    <EditTodoBtn id={todo.todo_id} todo={todo} />
+                    <EditModal key={todo.todo_id} todo={todo} />
                     <DeleteTodoBtn id={todo.todo_id} todo={todo} />
                 </div>
             </div>
