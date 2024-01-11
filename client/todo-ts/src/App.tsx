@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import TodoItem from '../components/TodoItem';
+import CreateTodo from '../components/CreateTodo';
 
 // TODO Check if this is the correct way to do in ts
 
@@ -38,6 +39,7 @@ function App() {
     return (
         <div className="container">
             <h1 id="title">Todo</h1>
+            <CreateTodo />
             <div className="todo-container">
                 {todos.map((todo) => (
                     <TodoItem key={todo.todo_id} todo={todo} />

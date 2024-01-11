@@ -86,7 +86,7 @@ export default function EditModal({ todo }: EditModalProps) {
                             </button>
                             <button
                                 className="cancel-btn"
-                                onClick={handleCancelClick}
+                                onClick={() => handleCancelClick()}
                             >
                                 Cancel
                             </button>

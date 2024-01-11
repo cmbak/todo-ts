@@ -142,3 +142,33 @@ button {
   padding: .35rem;
   border-radius: .8rem;
 }
+
+/* Create Todo Styling */
+/* #create-todo-container {
+  width: 55%;
+} */
+
+#create-todo-form {
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+}
+
+#create-todo-form input {
+  color: white;
+  background-color: transparent;
+  border: 2px solid rgb(163, 163, 163);
+  padding: .4rem;
+  border-radius: .5rem;
+}
+
+#create-todo-submit {
+  color: green;
+  border: 1px solid green;
+  transition: .3s;
+}
+
+#create-todo-submit:hover {
+  background-color: green;
+  color:white;
+}
