@@ -5,8 +5,15 @@ export default function CreateTodo() {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
 
+    function getCurrentDate() {
+        const today = new Date();
+        return `${today.getFullYear()}-${today.getDate()}-${today.getDay()}`;
+    }
+
     async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
         e.preventDefault();
+
+        console.log(getCurrentDate());
 
         // POST
         // await fetch(`http://localhost:3000/todos/${USERID_CHANGE}`, {
