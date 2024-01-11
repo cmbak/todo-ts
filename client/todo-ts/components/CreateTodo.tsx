@@ -15,21 +15,15 @@ export default function CreateTodo() {
     async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
         e.preventDefault();
 
-        // console.log(getCurrentDate());
-        // console.log(typeof getCurrentDate());
-        // console.log(typeof '2022-01-11');
-        // console.log(getCurrentDate() == '2022-01-11');
-
-        // POST
-        // await fetch(`http://localhost:3000/todos/${USERID_CHANGE}`, {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify({
-        //         name: name,
-        //         description: description,
-        //         dueDate: dueDate,
-        //     }),
-        // });
+        await fetch(`http://localhost:3000/todos/${USERID_CHANGE}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                name: name,
+                description: description,
+                dueDate: dueDate,
+            }),
+        });
     }
 
     return (
