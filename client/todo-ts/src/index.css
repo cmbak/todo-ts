@@ -60,7 +60,7 @@ body {
 }
 
 /* Todo button styling */
-.todo-btn, .edit-btn-modal button {
+button {
   padding: .5rem;
   border-radius: .8rem;
   border: none;
@@ -81,12 +81,12 @@ body {
 }
 
 /* Delete todo button styling */
-.delete-btn {
+.delete-btn, .cancel-btn {
   border: 1px solid rgb(218, 10, 10);
   color: red;
 }
 
-.delete-btn:hover {
+.delete-btn:hover, .cancel-btn:hover {
   background-color: rgb(218, 10, 10);
   color: white;
 }
@@ -113,8 +113,7 @@ body {
 .overlay {
   z-index: 5;
   position: fixed;
-  /* display: none; */
-  opacity: 0;
+  /* opacity: 0; */
   top: 0;
   left: 0;
   right: 0;
