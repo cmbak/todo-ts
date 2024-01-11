@@ -62,20 +62,26 @@ export default function EditModal({ todo }: EditModalProps) {
             >
                 <div className="modal">
                     <div className="modal-content">
-                        <form onSubmit={(e) => handleSubmit(e)}>
+                        <form
+                            className="modal-form"
+                            onSubmit={(e) => handleSubmit(e)}
+                        >
+                            <h2>Editing {name}</h2>
+                            <label htmlFor="name">Name</label>
                             <input
                                 type="text"
                                 name="name"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                             />
+                            <label htmlFor="description">Description</label>
                             <input
                                 type="text"
                                 name="description"
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
                             />
-                            <button className="edit-todo-btn" type="submit">
+                            <button className="edit-btn" type="submit">
                                 Edit Todo
                             </button>
                             <button

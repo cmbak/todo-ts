@@ -94,18 +94,15 @@ button {
 /* Edit btn styling */
 
 /* modal styling */
-.show-modal {
-  display: block;
-}
-
 .modal {
   z-index: 10;
-  border: 6px solid green;
+  border: 3px solid rgb(224, 188, 5);
+  border-radius: 1.1rem;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: lightblue;
+  background-color: rgb(49, 49, 49);
   padding: 2.5rem;
 }
 
@@ -129,4 +126,19 @@ button {
 
 .hidden {
   display: none;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: .7rem;
+  color: white;
+  text-align: center;
+  font-size: 1.15rem;
+  font-weight: bold;
+}
+
+.modal-form input {
+  padding: .35rem;
+  border-radius: .8rem;
 }
