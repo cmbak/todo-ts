@@ -7,7 +7,7 @@ import CreateTodo from '../components/CreateTodo';
 export interface Todo {
     todo_id: number;
     name: string;
-    description: string;
+    description: string; // FIXME should be optio!
     created_at: string;
     due_date: string;
     user_id: number;
