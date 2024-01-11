@@ -24,10 +24,13 @@ export default function CreateTodo() {
                 dueDate: dueDate,
             }),
         });
+
+        // Hide form
     }
 
     return (
         <div id="create-todo-container">
+            <button id="show-create-form-btn">Create New Todo</button>
             <form
                 id="create-todo-form"
                 action=""

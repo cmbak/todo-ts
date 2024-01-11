@@ -144,11 +144,27 @@ button {
 }
 
 /* Create Todo Styling */
-/* #create-todo-container {
-  width: 55%;
-} */
+#create-todo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+#show-create-form-btn {
+  border: 1px solid rgb(68, 85, 232);
+  color: rgb(68, 85, 232);
+}
+
+#show-create-form-btn:hover {
+  color: white;
+  background-color: rgb(68, 85, 232);
+}
 
 #create-todo-form {
+  border: 2px solid goldenrod;
+  padding: 1.4rem;
+  border-radius: .7rem;
   display: flex;
   flex-direction: column;
   gap: .6rem;
