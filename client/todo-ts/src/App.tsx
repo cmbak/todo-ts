@@ -17,7 +17,6 @@ export interface Todo {
 
 function App() {
     const [todos, setTodos] = useState<Array<Todo>>([]);
-    const [needRender, setNeedRender] = useState(false);
 
     // TODO does this need to be async?
     async function getTodos() {
@@ -41,31 +40,20 @@ function App() {
         try {
             await fetch(`http://localhost:3000/todos/${id}`, {
                 method: 'DELETE',
-                // mode: 'no-cors',
             });
-            // setNeedRender(true);
-            console.log('filter successs!');
-
-            setTodos((prevTodos) =>
-                prevTodos.filter((todo) => todo.todo_id !== id)
-            );
-            // setTodos([]);
+            getTodos();
         } catch (error) {
             if (error instanceof Error) {
                 console.log(error.message);
             } else {
                 console.log(error as string);
             }
-            console.log('RRRR');
         }
-        console.log(todos);
-        setNeedRender((prevNeedRender) => !prevNeedRender);
     }
 
     useEffect(() => {
         getTodos();
-        // setNeedRender(false);
-    }, [JSON.stringify(todos), needRender]);
+    }, [JSON.stringify(todos)]); // TODO Find better solution
 
     return (
         <div className="container">
