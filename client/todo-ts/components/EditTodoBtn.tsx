@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { TodoBtnProps } from './TodoItem';
+import EditModal from './EditModal';
 
 export default function EditTodoBtn({ todo }: TodoBtnProps) {
     const [name, setName] = useState(todo.name);
@@ -31,31 +32,7 @@ export default function EditTodoBtn({ todo }: TodoBtnProps) {
                 Edit Todo
             </button>
             {/* TODO make modal separate component? */}
-            {showModal && (
-                <div
-                    className="edit-btn-modal"
-                    id={`edit-btn-modal-${todo.todo_id}`}
-                >
-                    <form onSubmit={handleSubmit}>
-                        <input
-                            type="text"
-                            name="name"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                        />
-                        <input
-                            type="text"
-                            name="description"
-                            value={description}
-                            onChange={(e) => setDescription(e.target.value)}
-                        />
-                        <button type="submit" className="edit-btn">
-                            Edit Todo
-                        </button>
-                        {/* <input type="text" name="due-date" id="" /> */}
-                    </form>
-                </div>
-            )}
+            {showModal && <EditModal todo={todo} />}
         </>
     );
 }

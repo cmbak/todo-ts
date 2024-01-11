@@ -94,6 +94,7 @@ body {
 /* Edit btn styling */
 .edit-btn-modal {
   /* display: none; */
+  z-index: 1;
   background-color: rgba(255, 0, 0, 0.521);
 }
 
@@ -101,6 +102,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  margin: 10rem;
 }
 
 /* modal styling */
