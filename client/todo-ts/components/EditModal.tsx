@@ -29,7 +29,7 @@ export default function EditModal({ todo }: EditModalProps) {
                 <button className="edit-todo-btn">Edit Todo</button>
                 <button className="cancel-btn">Cancel</button>
             </div>
-            <div className="overlay"></div>
+            <div className="overlay active"></div>
         </>
     );
 }

@@ -32,7 +32,7 @@ export default function EditTodoBtn({ todo }: TodoBtnProps) {
                 Edit Todo
             </button>
             {/* TODO make modal separate component? */}
-            {showModal && <EditModal todo={todo} />}
+            {showModal && <EditModal key={todo.todo_id} todo={todo} />}
         </>
     );
 }
