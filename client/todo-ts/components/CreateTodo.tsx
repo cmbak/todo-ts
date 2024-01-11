@@ -34,6 +34,12 @@ export default function CreateTodo() {
         setFormVisible(true);
     }
 
+    function clearForm() {
+        setName('');
+        setDescription('');
+        setDueDate(getCurrentDate());
+    }
+
     return (
         <div id="create-todo-container">
             {showBtnVisible && (
@@ -77,6 +83,17 @@ export default function CreateTodo() {
                     />
                     <button type="submit" id="create-todo-submit">
                         Create Todo
+                    </button>
+                    <button
+                        className="cancel-btn"
+                        onClick={() => {
+                            setFormVisible(false);
+                            setShowBtnVisible(true);
+                            clearForm();
+                        }}
+                        type="reset"
+                    >
+                        Cancel
                     </button>
                 </form>
             )}
