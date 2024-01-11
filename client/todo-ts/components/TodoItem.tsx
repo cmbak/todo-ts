@@ -26,14 +26,18 @@ export interface TodoBtnProps {
     };
 }
 
+export interface DeleteTodoBtnProps extends TodoBtnProps {
+    deleteTodo: (id: number) => void;
+}
+
 export default function TodoItem({ todo }: TodoItemProps) {
     return (
         <div className="todo-item">
-            <div className="todo-header">
+            {/* <div className="todo-header">
                 <h2 className="todo-title">{todo.name}</h2>
                 <div className="todo-btn-container">
                     <EditModal key={todo.todo_id} todo={todo} />
-                    <DeleteTodoBtn id={todo.todo_id} todo={todo} />
+                    <DeleteTodoBtn id={todo.todo_id} todo={todo} deleteTodo={deleteTodo}/>
                 </div>
             </div>
             <div className="todo-info">
@@ -41,7 +45,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
                     <p className="todo-desc">{todo.description}</p>
                 )}
                 <p className="due-date">Due in X days</p>
-            </div>
+            </div> */}
         </div>
     );
 }

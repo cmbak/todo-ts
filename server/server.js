@@ -44,13 +44,15 @@ app.get('/todos/:userId', logParams, async (req, res) => {
 // DELETE
 app.delete('/todos/:todoId', logParams, async (req, res) => {
     console.log('called');
-    try {
-        const { todoId } = req.params;
+    const { todoId } = req.params;
 
+    try {
         const response = await pool.query(
-            'DELETE FROM todo WHERE todo_id = $1;',
+            'DELETE FROM todo WHERE todo_id = $1',
             [todoId]
         );
+        console.log('Deleted todo');
+        res.status(200).send({ test: 'hi' });
         // response.rowCount
     } catch (error) {
         console.error(`ERROR: ${error.message}`);
