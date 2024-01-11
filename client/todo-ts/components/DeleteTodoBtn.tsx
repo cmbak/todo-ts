@@ -1,27 +1,22 @@
+// TODO is this the correct way to do
+interface DeleteTodoBtnProps {
+    id: number;
+    todo: {
+        todo_id: number;
+        name: string;
+        description?: string;
+        created_at: string;
+        due_date: string;
+        user_id: number;
+    };
+    deleteTodo: (id: number) => void;
+}
+
 import React from 'react';
-import { DeleteTodoBtnProps } from './TodoItem';
 
 export default function DeleteTodoBtn({ id, deleteTodo }: DeleteTodoBtnProps) {
-    // async function deleteTodo(id: number) {
-    //     try {
-    //         await fetch(`http://localhost:3000/todos/${id}`, {
-    //             method: 'DELETE',
-    //         });
-    //     } catch (error) {
-    //         if (error instanceof Error) {
-    //             console.log(error.message);
-    //         }
-    //     }
-    // }
-
     return (
-        <button
-            className="todo-btn delete-btn"
-            onClick={() => {
-                deleteTodo(id);
-                // window.location.reload(); // TODO is there a better way of doing this? e.g. with state
-            }}
-        >
+        <button className="todo-btn delete-btn" onClick={() => deleteTodo(id)}>
             Delete Todo
         </button>
     );
