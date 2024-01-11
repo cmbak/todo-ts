@@ -18,6 +18,8 @@ export default function CreateTodo() {
     async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
         e.preventDefault();
 
+        console.log(description.length);
+
         await fetch(`http://localhost:3000/todos/${USERID_CHANGE}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -67,12 +69,13 @@ export default function CreateTodo() {
                     />
                     <label htmlFor="description">Description</label>
                     <input
+                        maxLength={255}
                         name="description"
                         type="text"
                         placeholder="Finish notes from today..."
                         onChange={(e) => setDescription(e.target.value)}
                     />
-                    {/* Change to text area? make sure that db char limit*/}
+                    {/* Change to text area?*/}
                     <label htmlFor="date">Due Date</label>
                     <input
                         type="date"
