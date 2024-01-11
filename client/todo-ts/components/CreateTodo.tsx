@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export default function CreateTodo() {
-    const USERID_CHANGE = 2;
+    const USERID_CHANGE = 1;
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
 
@@ -9,14 +9,13 @@ export default function CreateTodo() {
         e.preventDefault();
 
         // POST
-        // await fetch('http://localhost:3000/todos', {
+        // await fetch(`http://localhost:3000/todos/${USERID_CHANGE}`, {
         //     method: 'POST',
         //     headers: { 'Content-Type': 'application/json' },
         //     body: JSON.stringify({
         //         name: name,
         //         description: description,
         //         // dueDate?: dueDate, - default to today?
-        //         userId: USERID_CHANGE,
         //     }),
         // });
     }

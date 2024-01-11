@@ -72,6 +72,21 @@ app.put('/todos/:todoId', logParams, async (req, res) => {
     }
 });
 
+// POST
+app.post('/todos/:userId', logParams, async (req, res) => {
+    const { userId } = req.params;
+    const { name, description, dueDate } = req.body;
+    try {
+        await pool.query(
+            'INSERT INTO todo (name, description, due_date, user_id) VALUES ($1, $2, $3, $4);',
+            [name, description, dueDate, userId]
+        );
+        console.log('New todo created');
+    } catch (error) {
+        console.log(`ERROR: ${error.message}`);
+    }
+});
+
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
 });
