@@ -9,9 +9,10 @@ interface EditModalProps {
         due_date: string;
         user_id: number;
     };
+    editTodo: (id: number, name: string, description: string) => void;
 }
 
-export default function EditModal({ todo }: EditModalProps) {
+export default function EditModal({ todo, editTodo }: EditModalProps) {
     const [name, setName] = useState(todo.name);
     const [description, setDescription] = useState(todo.description || ''); // Need ''?
     // todo date?
@@ -20,15 +21,15 @@ export default function EditModal({ todo }: EditModalProps) {
     async function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
         event.preventDefault();
 
-        // console.log(`Edit Todo ${name} ${description}`);
-        await fetch(`http://localhost:3000/todos/${todo.todo_id}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                name: name,
-                description: description,
-            }),
-        });
+        await editTodo(todo.todo_id, name, description);
+        // await fetch(`http://localhost:3000/todos/${todo.todo_id}`, {
+        //     method: 'PUT',
+        //     headers: { 'Content-Type': 'application/json' },
+        //     body: JSON.stringify({
+        //         name: name,
+        //         description: description,
+        //     }),
+        // });
 
         closeModal();
     }

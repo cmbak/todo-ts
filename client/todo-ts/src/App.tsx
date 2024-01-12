@@ -51,6 +51,19 @@ function App() {
         }
     }
 
+    async function editTodo(id: number, name: string, description: string) {
+        await fetch(`http://localhost:3000/todos/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                name: name,
+                description: description,
+            }),
+        });
+
+        getTodos();
+    }
+
     useEffect(() => {
         getTodos();
     }, [JSON.stringify(todos)]); // TODO Find better solution
@@ -65,7 +78,11 @@ function App() {
                         <div className="todo-header">
                             <h2 className="todo-title">{todo.name}</h2>
                             <div className="todo-btn-container">
-                                <EditModal key={todo.todo_id} todo={todo} />
+                                <EditModal
+                                    key={todo.todo_id}
+                                    todo={todo}
+                                    editTodo={editTodo}
+                                />
                                 <DeleteTodoBtn
                                     id={todo.todo_id}
                                     todo={todo}
