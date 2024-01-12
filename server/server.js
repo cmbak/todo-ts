@@ -43,16 +43,14 @@ app.get('/todos/:userId', logParams, async (req, res) => {
 
 // DELETE
 app.delete('/todos/:todoId', logParams, async (req, res) => {
-    console.log('called');
     const { todoId } = req.params;
-
     try {
         const response = await pool.query(
             'DELETE FROM todo WHERE todo_id = $1',
             [todoId]
         );
         console.log('Deleted todo');
-        res.status(200).send({ test: 'hi' });
+        res.status(200).send({ deleted: 'yep' }); // FIXME status of 204 doesn't work? something to do w/ fetch?
         // response.rowCount
     } catch (error) {
         console.error(`ERROR: ${error.message}`);
@@ -68,6 +66,7 @@ app.put('/todos/:todoId', logParams, async (req, res) => {
             'UPDATE todo SET name = $1, description = $2 WHERE todo_id = $3',
             [name, description, todoId]
         );
+        res.status(200).send({ updated: 'yep' }); // FIXME
         console.log(`Todo with id ${todoId} updated`);
     } catch (error) {
         console.error(`ERROR: ${error.message}`);
@@ -84,6 +83,7 @@ app.post('/todos/:userId', logParams, async (req, res) => {
             [name, description, dueDate, userId]
         );
         console.log('New todo created');
+        res.status(200).send({ created: 'yep' }); // FIXME check if other codes work
     } catch (error) {
         console.log(`ERROR: ${error.message}`);
     }
