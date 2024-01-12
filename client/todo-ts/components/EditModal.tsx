@@ -20,17 +20,7 @@ export default function EditModal({ todo, editTodo }: EditModalProps) {
 
     async function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
         event.preventDefault();
-
         await editTodo(todo.todo_id, name, description);
-        // await fetch(`http://localhost:3000/todos/${todo.todo_id}`, {
-        //     method: 'PUT',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify({
-        //         name: name,
-        //         description: description,
-        //     }),
-        // });
-
         closeModal();
     }
 
