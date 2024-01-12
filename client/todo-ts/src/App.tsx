@@ -64,6 +64,24 @@ function App() {
         getTodos();
     }
 
+    async function createTodo(
+        user_id: number,
+        name: string,
+        description: string,
+        dueDate: string
+    ) {
+        await fetch(`http://localhost:3000/todos/${user_id}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                name: name,
+                description: description,
+                dueDate: dueDate,
+            }),
+        });
+        getTodos();
+    }
+
     useEffect(() => {
         getTodos();
     }, [JSON.stringify(todos)]); // TODO Find better solution
@@ -71,7 +89,7 @@ function App() {
     return (
         <div className="container">
             <h1 id="title">Todo</h1>
-            <CreateTodo />
+            <CreateTodo createTodo={createTodo} />
             <div className="todo-container">
                 {todos.map((todo) => (
                     <div key={todo.todo_id} className="todo-item">

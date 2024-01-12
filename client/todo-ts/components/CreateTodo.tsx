@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 
+interface CreateTodoProps {
+    createTodo: (
+        id: number,
+        name: string,
+        description: string,
+        dueDate: string
+    ) => void;
+}
+
 // Would this look better as a modal?
-export default function CreateTodo() {
-    const USERID_CHANGE = 1;
+export default function CreateTodo({ createTodo }: CreateTodoProps) {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [dueDate, setDueDate] = useState(getCurrentDate());
@@ -17,18 +25,10 @@ export default function CreateTodo() {
 
     async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
         e.preventDefault();
+        const USERID_CHANGE = 1; // TODO - USER SYSTEM?
 
         console.log(description.length);
-
-        await fetch(`http://localhost:3000/todos/${USERID_CHANGE}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                name: name,
-                description: description,
-                dueDate: dueDate,
-            }),
-        });
+        await createTodo(USERID_CHANGE, name, description, dueDate);
     }
 
     function handleClick() {
