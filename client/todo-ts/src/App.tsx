@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react';
-// import TodoItem from '../components/TodoItem';
 import CreateTodo from '../components/CreateTodo';
 import EditModal from '../components/EditModal';
 import DeleteTodoBtn from '../components/DeleteTodoBtn';
+import Countdown from '../components/Countdown';
 
 // TODO Check if this is the correct way to do in ts
+
+// TODO - DUE DATE COUNTDOWN
+// LOCAL STORAGE? FOR AUTH?
+// HOST
 
 export interface Todo {
     todo_id: number;
@@ -84,7 +88,7 @@ function App() {
 
     useEffect(() => {
         getTodos();
-    }, [JSON.stringify(todos)]); // TODO Find better solution
+    }, [JSON.stringify(todos)]); // Ensures that todos updated when array changes TODO Find better solution
 
     return (
         <div className="container">
@@ -112,7 +116,7 @@ function App() {
                             {todo.description && (
                                 <p className="todo-desc">{todo.description}</p>
                             )}
-                            <p className="due-date">Due in X days</p>
+                            <Countdown dueDate={todo.due_date} />
                         </div>
                     </div>
                 ))}
