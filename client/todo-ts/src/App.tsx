@@ -55,13 +55,19 @@ function App() {
         }
     }
 
-    async function editTodo(id: number, name: string, description: string) {
+    async function editTodo(
+        id: number,
+        name: string,
+        description: string,
+        dueDate: string
+    ) {
         await fetch(`http://localhost:3000/todos/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 name: name,
                 description: description,
+                dueDate: dueDate,
             }),
         });
 

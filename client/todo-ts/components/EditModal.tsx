@@ -10,7 +10,12 @@ interface EditModalProps {
         due_date: string;
         user_id: number;
     };
-    editTodo: (id: number, name: string, description: string) => void;
+    editTodo: (
+        id: number,
+        name: string,
+        description: string,
+        due_date: string
+    ) => void;
 }
 
 export default function EditModal({ todo, editTodo }: EditModalProps) {
@@ -21,7 +26,7 @@ export default function EditModal({ todo, editTodo }: EditModalProps) {
 
     async function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
         event.preventDefault();
-        await editTodo(todo.todo_id, name, description);
+        await editTodo(todo.todo_id, name, description, dueDate);
         closeModal();
     }
 

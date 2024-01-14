@@ -61,10 +61,10 @@ app.delete('/todos/:todoId', logParams, async (req, res) => {
 app.put('/todos/:todoId', logParams, async (req, res) => {
     try {
         const todoId = Number(req.params.todoId);
-        const { name, description } = req.body;
+        const { name, description, dueDate } = req.body;
         const response = await pool.query(
-            'UPDATE todo SET name = $1, description = $2 WHERE todo_id = $3',
-            [name, description, todoId]
+            'UPDATE todo SET name = $1, description = $2, due_date = $3 WHERE todo_id = $4',
+            [name, description, dueDate, todoId]
         );
         res.status(200).send({ updated: 'yep' }); // FIXME
         console.log(`Todo with id ${todoId} updated`);
