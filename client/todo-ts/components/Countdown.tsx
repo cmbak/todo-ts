@@ -6,13 +6,20 @@ interface CountdownProps {
 }
 
 export default function Countdown({ dueDate }: CountdownProps) {
-    function calcDaysLeft(dueDate) {
-        console.log(getCurrentDate());
+    function getDaysLeft(dueDate: string) {
+        const currDate = new Date(getCurrentDate());
+        const due = new Date(dueDate);
+        // Check what happens for daylight savings
+        currDate.setHours(0, 0, 0);
+        due.setHours(0, 0, 0);
+
+        const oneDay = 24 * 60 * 60 * 1000;
+        return (due - currDate) / oneDay;
     }
 
     useEffect(() => {
-        calcDaysLeft(dueDate);
+        getDaysLeft(dueDate);
     }, []);
 
-    return <div>Due in {dueDate} Days</div>;
+    return <div>Due in {getDaysLeft(dueDate)} Days</div>;
 }
