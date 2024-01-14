@@ -30,7 +30,15 @@ export default function Countdown({ dueDate }: CountdownProps) {
     }, [daysLeft]); // Otherwise doesn't update classes or negative days
 
     return (
-        <div className={`countdown ${isOverdue ? 'overdue' : 'normal-due'}`}>
+        <div
+            className={`countdown ${
+                isOverdue
+                    ? 'overdue'
+                    : daysLeft == 1
+                    ? 'due-soon'
+                    : 'normal-due'
+            }`}
+        >
             <p>
                 {isOverdue
                     ? `Overdue by ${daysLeft * -1} days!`
