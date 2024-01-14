@@ -4,6 +4,7 @@ import EditModal from '../components/EditModal';
 import DeleteTodoBtn from '../components/DeleteTodoBtn';
 import Countdown from '../components/Countdown';
 import { getDaysLeft } from '../dates';
+import Modal from '../components/Modal';
 
 // TODO Check if this is the correct way to do in ts
 
@@ -24,7 +25,6 @@ function App() {
 
     // TODO does this need to be async?
     async function getTodos() {
-        console.log('bop');
         try {
             const response = await fetch('http://localhost:3000/todos/'); // TODO correct way of using it
             const result = await response.json();
@@ -132,6 +132,10 @@ function App() {
                             )}
                             <Countdown dueDate={todo.due_date} />
                         </div>
+
+                        {/* <Modal>
+                            <div id="hi">HELLO</div>
+                        </Modal> */}
                     </div>
                 ))}
             </div>
