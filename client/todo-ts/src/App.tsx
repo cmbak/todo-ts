@@ -3,10 +3,10 @@ import CreateTodo from '../components/CreateTodo';
 import EditModal from '../components/EditModal';
 import DeleteTodoBtn from '../components/DeleteTodoBtn';
 import Countdown from '../components/Countdown';
+import { getDaysLeft } from '../dates';
 
 // TODO Check if this is the correct way to do in ts
 
-// TODO - DUE DATE COUNTDOWN
 // LOCAL STORAGE? FOR AUTH?
 // HOST
 
@@ -28,6 +28,7 @@ function App() {
         try {
             const response = await fetch('http://localhost:3000/todos/'); // TODO correct way of using it
             const result = await response.json();
+            sortTodos(result);
             setTodos(result);
         } catch (error) {
             if (error instanceof Error) {
@@ -91,6 +92,12 @@ function App() {
             }),
         });
         getTodos();
+    }
+
+    function sortTodos(todos: Array<Todo>) {
+        todos.sort(function (t1: Todo, t2: Todo) {
+            return getDaysLeft(t1.due_date) - getDaysLeft(t2.due_date);
+        });
     }
 
     useEffect(() => {
