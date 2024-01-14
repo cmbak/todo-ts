@@ -27,10 +27,10 @@ export default function Countdown({ dueDate }: CountdownProps) {
     useEffect(() => {
         setDaysLeft(getDaysLeft(dueDate));
         setIsOverdue(getIsOverdue(daysLeft));
-    }, []);
+    }, [daysLeft]); // Otherwise doesn't update classes or negative days
 
     return (
-        <div className={`countdown ${isOverdue ? 'overdue' : ''}`}>
+        <div className={`countdown ${isOverdue ? 'overdue' : 'normal-due'}`}>
             <p>
                 {isOverdue
                     ? `Overdue by ${daysLeft * -1} days!`
