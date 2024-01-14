@@ -54,58 +54,53 @@ export default function EditModal({ todo, editTodo }: EditModalProps) {
                 </button>
             </div>
             <Modal>
-                <div
+                <form className="modal-form" onSubmit={(e) => handleSubmit(e)}>
+                    <h2>Editing {name}</h2>
+                    <label htmlFor="name">Name</label>
+                    <input
+                        type="text"
+                        name="name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                    <label htmlFor="description">Description</label>
+                    <input
+                        type="text"
+                        name="description"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                    />
+                    <input
+                        type="date"
+                        name="date"
+                        value={dueDate}
+                        // min={splitTDate(todo.due_date)}
+                        onChange={(e) => setDueDate(splitTDate(e.target.value))}
+                    />
+                    <button className="edit-btn" type="submit">
+                        Edit Todo
+                    </button>
+                    <button
+                        type="button"
+                        className="cancel-btn"
+                        onClick={() => handleCancelClick()}
+                    >
+                        Cancel
+                    </button>
+                </form>
+
+                {/* <div
                     className={`modal-container ${
                         display == false ? 'hidden' : ''
                     }`}
                 >
                     <div className="modal">
                         <div className="modal-content">
-                            <form
-                                className="modal-form"
-                                onSubmit={(e) => handleSubmit(e)}
-                            >
-                                <h2>Editing {name}</h2>
-                                <label htmlFor="name">Name</label>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                />
-                                <label htmlFor="description">Description</label>
-                                <input
-                                    type="text"
-                                    name="description"
-                                    value={description}
-                                    onChange={(e) =>
-                                        setDescription(e.target.value)
-                                    }
-                                />
-                                <input
-                                    type="date"
-                                    name="date"
-                                    value={dueDate}
-                                    // min={splitTDate(todo.due_date)}
-                                    onChange={(e) =>
-                                        setDueDate(splitTDate(e.target.value))
-                                    }
-                                />
-                                <button className="edit-btn" type="submit">
-                                    Edit Todo
-                                </button>
-                                <button
-                                    type="button"
-                                    className="cancel-btn"
-                                    onClick={() => handleCancelClick()}
-                                >
-                                    Cancel
-                                </button>
-                            </form>
+                            
                         </div>
                     </div>
                     <div className="overlay active"></div>
-                </div>
+                </div> */}
             </Modal>
         </>
     );
