@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getCurrentDate } from '../dates';
 
 interface CountdownProps {
@@ -6,6 +6,8 @@ interface CountdownProps {
 }
 
 export default function Countdown({ dueDate }: CountdownProps) {
+    const [daysLeft, setDaysLeft] = useState(0);
+
     function getDaysLeft(dueDate: string) {
         const currDate = new Date(getCurrentDate());
         const due = new Date(dueDate);
@@ -17,9 +19,19 @@ export default function Countdown({ dueDate }: CountdownProps) {
         return (due - currDate) / oneDay;
     }
 
+    function isOverdue();
+
     useEffect(() => {
-        getDaysLeft(dueDate);
+        setDaysLeft(getDaysLeft(dueDate));
     }, []);
 
-    return <div>Due in {getDaysLeft(dueDate)} Days</div>;
+    return (
+        <div className="countdown">
+            <p>
+                {daysLeft < 0
+                    ? `Overdue by ${daysLeft * -1} days!`
+                    : `Due in ${daysLeft} days`}
+            </p>
+        </div>
+    );
 }
