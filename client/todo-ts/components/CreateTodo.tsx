@@ -18,12 +18,6 @@ export default function CreateTodo({ createTodo }: CreateTodoProps) {
     const [formVisible, setFormVisible] = useState(false);
     const [showBtnVisible, setShowBtnVisible] = useState(true);
 
-    // function getCurrentDate() {
-    //     const today = new Date();
-    //     const month = `${today.getMonth() + 1}`.padStart(2, '0'); // getMonth() ret 0-11
-    //     return `${today.getFullYear()}-${month}-${today.getDate()}`;
-    // }
-
     async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
         e.preventDefault();
         const USERID_CHANGE = 1; // TODO - USER SYSTEM?

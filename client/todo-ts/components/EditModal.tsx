@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { splitTDate } from '../dates';
 
 interface EditModalProps {
     todo: {
@@ -15,7 +16,7 @@ interface EditModalProps {
 export default function EditModal({ todo, editTodo }: EditModalProps) {
     const [name, setName] = useState(todo.name);
     const [description, setDescription] = useState(todo.description || ''); // Need ''?
-    // todo date?
+    const [dueDate, setDueDate] = useState(splitTDate(todo.due_date));
     const [display, setDisplay] = useState(false);
 
     async function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
@@ -71,6 +72,15 @@ export default function EditModal({ todo, editTodo }: EditModalProps) {
                                 name="description"
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
+                            />
+                            <input
+                                type="date"
+                                name="date"
+                                value={dueDate}
+                                // min={splitTDate(todo.due_date)}
+                                onChange={(e) =>
+                                    setDueDate(splitTDate(e.target.value))
+                                }
                             />
                             <button className="edit-btn" type="submit">
                                 Edit Todo
