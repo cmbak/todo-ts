@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { getCurrentDate } from '../dates';
 
 interface CreateTodoProps {
     createTodo: (
@@ -17,11 +18,11 @@ export default function CreateTodo({ createTodo }: CreateTodoProps) {
     const [formVisible, setFormVisible] = useState(false);
     const [showBtnVisible, setShowBtnVisible] = useState(true);
 
-    function getCurrentDate() {
-        const today = new Date();
-        const month = `${today.getMonth() + 1}`.padStart(2, '0'); // getMonth() ret 0-11
-        return `${today.getFullYear()}-${month}-${today.getDate()}`;
-    }
+    // function getCurrentDate() {
+    //     const today = new Date();
+    //     const month = `${today.getMonth() + 1}`.padStart(2, '0'); // getMonth() ret 0-11
+    //     return `${today.getFullYear()}-${month}-${today.getDate()}`;
+    // }
 
     async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
         e.preventDefault();
