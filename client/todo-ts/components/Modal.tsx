@@ -2,11 +2,16 @@ import React from 'react';
 
 // TODO - Cancel button?
 
-export default function Modal(props) {
+interface ModalProps {
+    children: React.ReactNode;
+    visible: boolean;
+}
+
+export default function Modal({ children, visible }: ModalProps) {
     return (
         <div className={`modal-container`}>
             <div className="modal">
-                <div className="modal-content">{props.children}</div>
+                <div className="modal-content">{children}</div>
             </div>
             {/* {props.children} */}
         </div>

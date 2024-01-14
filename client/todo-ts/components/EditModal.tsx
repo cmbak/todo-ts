@@ -53,7 +53,7 @@ export default function EditModal({ todo, editTodo }: EditModalProps) {
                     Edit Todo
                 </button>
             </div>
-            <Modal>
+            <Modal visible={false}>
                 <form className="modal-form" onSubmit={(e) => handleSubmit(e)}>
                     <h2>Editing {name}</h2>
                     <label htmlFor="name">Name</label>
