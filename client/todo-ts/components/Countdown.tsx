@@ -41,8 +41,10 @@ export default function Countdown({ dueDate }: CountdownProps) {
         >
             <p>
                 {isOverdue
-                    ? `Overdue by ${daysLeft * -1} days!`
-                    : `Due in ${daysLeft} days`}
+                    ? `Overdue by ${daysLeft * -1} ${
+                          daysLeft == 1 ? 'day' : 'days' // TODO turn into state? or something
+                      }!`
+                    : `Due in ${daysLeft} ${daysLeft == 1 ? 'day' : 'days'}`}
             </p>
         </div>
     );
