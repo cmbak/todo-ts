@@ -17,7 +17,7 @@ export default function Countdown({ dueDate }: CountdownProps) {
         due.setHours(0, 0, 0);
 
         const oneDay = 24 * 60 * 60 * 1000;
-        return (due - currDate) / oneDay;
+        return Math.ceil((due - currDate) / oneDay);
     }
 
     function getIsOverdue(daysLeft: number) {
