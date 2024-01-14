@@ -71,6 +71,7 @@ function App() {
             }),
         });
 
+        setTodos([]); // in editTodo, useEffect doesn't run unless todos is changed (despite JSON.stringy - need to find dif solution)
         getTodos();
     }
 
