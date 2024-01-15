@@ -4,10 +4,9 @@ import React from 'react';
 
 interface ModalProps {
     children: React.ReactNode;
-    visible: boolean;
 }
 
-export default function Modal({ children, visible }: ModalProps) {
+export default function Modal({ children }: ModalProps) {
     return (
         <div className={`modal-container`}>
             <div className="modal">
