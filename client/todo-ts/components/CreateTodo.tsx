@@ -51,6 +51,7 @@ export default function CreateTodo({ createTodo }: CreateTodoProps) {
                 onClick={handleClick}
             />
             <Modal visible={formVisible}>
+                <h1>Create Todo</h1>
                 <form
                     id="create-todo-form"
                     action=""
