@@ -48,12 +48,11 @@ export default function EditModal({ todo, editTodo }: EditModalProps) {
     return (
         <>
             <div className="">
-                <ShowModalBtn className="todo-btn edit-btn" text="Edit Todo" />
-                {/* <button
+                <ShowModalBtn
                     className="todo-btn edit-btn"
-                    onClick={() => handleShowClick()}
-                >
-                    Edit Todo */}
+                    text="Edit Todo"
+                    onClick={handleShowClick}
+                />
             </div>
             {visible && (
                 <Modal>
@@ -88,14 +87,11 @@ export default function EditModal({ todo, editTodo }: EditModalProps) {
                         <button className="edit-btn" type="submit">
                             Edit Todo
                         </button>
-                        <HideModalBtn text="Cancel" className="cancel-btn" />
-                        {/* <button
-                            type="button"
+                        <HideModalBtn
+                            text="Cancel"
                             className="cancel-btn"
-                            onClick={() => handleCancelClick()}
-                        >
-                            Cancel
-                        </button> */}
+                            onClick={handleCancelClick}
+                        />
                     </form>
                 </Modal>
             )}
