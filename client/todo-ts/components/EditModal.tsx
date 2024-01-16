@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { splitTDate } from '../dates';
 import Modal from './Modal';
+import HideModalBtn from './HideModalBtn';
+import ShowModalBtn from './ShowModalBtn';
 
 interface EditModalProps {
     todo: {
@@ -46,12 +48,12 @@ export default function EditModal({ todo, editTodo }: EditModalProps) {
     return (
         <>
             <div className="">
-                <button
+                <ShowModalBtn className="todo-btn edit-btn" text="Edit Todo" />
+                {/* <button
                     className="todo-btn edit-btn"
                     onClick={() => handleShowClick()}
                 >
-                    Edit Todo
-                </button>
+                    Edit Todo */}
             </div>
             {visible && (
                 <Modal>
@@ -86,27 +88,15 @@ export default function EditModal({ todo, editTodo }: EditModalProps) {
                         <button className="edit-btn" type="submit">
                             Edit Todo
                         </button>
-                        <button
+                        <HideModalBtn text="Cancel" className="cancel-btn" />
+                        {/* <button
                             type="button"
                             className="cancel-btn"
                             onClick={() => handleCancelClick()}
                         >
                             Cancel
-                        </button>
+                        </button> */}
                     </form>
-
-                    {/* <div
-                    className={`modal-container ${
-                        display == false ? 'hidden' : ''
-                    }`}
-                >
-                    <div className="modal">
-                        <div className="modal-content">
-                            
-                        </div>
-                    </div>
-                    <div className="overlay active"></div>
-                </div> */}
                 </Modal>
             )}
         </>

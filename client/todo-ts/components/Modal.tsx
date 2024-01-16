@@ -1,4 +1,5 @@
 import React from 'react';
+import ShowModalBtn from './ShowModalBtn';
 
 // TODO - Cancel button?
 
@@ -8,12 +9,15 @@ interface ModalProps {
 
 export default function Modal({ children }: ModalProps) {
     return (
-        <div className={`modal-container`}>
-            <div className="modal">
-                <div className="modal-content">{children}</div>
+        <>
+            {/* <ShowModalBtn /> */}
+            <div className={`modal-container`}>
+                <div className="modal">
+                    <div className="modal-content">{children}</div>
+                </div>
+                {/* {props.children} */}
+                <div className="overlay active"></div>
             </div>
-            {/* {props.children} */}
-            <div className="overlay active"></div>
-        </div>
+        </>
     );
 }
