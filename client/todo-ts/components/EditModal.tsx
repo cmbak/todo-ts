@@ -54,47 +54,40 @@ export default function EditModal({ todo, editTodo }: EditModalProps) {
                     onClick={handleShowClick}
                 />
             </div>
-            {visible && (
-                <Modal>
-                    <form
-                        className="modal-form"
-                        onSubmit={(e) => handleSubmit(e)}
-                    >
-                        <h2>Editing {name}</h2>
-                        <label htmlFor="name">Name</label>
-                        <input
-                            type="text"
-                            name="name"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                        />
-                        <label htmlFor="description">Description</label>
-                        <input
-                            type="text"
-                            name="description"
-                            value={description}
-                            onChange={(e) => setDescription(e.target.value)}
-                        />
-                        <input
-                            type="date"
-                            name="date"
-                            value={dueDate}
-                            // min={splitTDate(todo.due_date)}
-                            onChange={(e) =>
-                                setDueDate(splitTDate(e.target.value))
-                            }
-                        />
-                        <button className="edit-btn" type="submit">
-                            Edit Todo
-                        </button>
-                        <HideModalBtn
-                            text="Cancel"
-                            className="cancel-btn"
-                            onClick={handleCancelClick}
-                        />
-                    </form>
-                </Modal>
-            )}
+            <Modal visible={visible}>
+                <form className="modal-form" onSubmit={(e) => handleSubmit(e)}>
+                    <h2>Editing {name}</h2>
+                    <label htmlFor="name">Name</label>
+                    <input
+                        type="text"
+                        name="name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                    <label htmlFor="description">Description</label>
+                    <input
+                        type="text"
+                        name="description"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                    />
+                    <input
+                        type="date"
+                        name="date"
+                        value={dueDate}
+                        // min={splitTDate(todo.due_date)}
+                        onChange={(e) => setDueDate(splitTDate(e.target.value))}
+                    />
+                    <button className="edit-btn" type="submit">
+                        Edit Todo
+                    </button>
+                    <HideModalBtn
+                        text="Cancel"
+                        className="cancel-btn"
+                        onClick={handleCancelClick}
+                    />
+                </form>
+            </Modal>
         </>
     );
 }

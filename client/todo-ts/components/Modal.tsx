@@ -1,23 +1,16 @@
 import React from 'react';
-import ShowModalBtn from './ShowModalBtn';
-
-// TODO - Cancel button?
-
 interface ModalProps {
     children: React.ReactNode;
+    visible: boolean;
 }
 
-export default function Modal({ children }: ModalProps) {
+export default function Modal({ children, visible }: ModalProps) {
     return (
-        <>
-            {/* <ShowModalBtn /> */}
-            <div className={`modal-container`}>
-                <div className="modal">
-                    <div className="modal-content">{children}</div>
-                </div>
-                {/* {props.children} */}
-                <div className="overlay active"></div>
+        <div className={`modal-container ${visible === false ? 'hidden' : ''}`}>
+            <div className="modal">
+                <div className="modal-content">{children}</div>
             </div>
-        </>
+            <div className="overlay active"></div>
+        </div>
     );
 }

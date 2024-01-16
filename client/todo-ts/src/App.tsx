@@ -4,7 +4,6 @@ import EditModal from '../components/EditModal';
 import DeleteTodoBtn from '../components/DeleteTodoBtn';
 import Countdown from '../components/Countdown';
 import { getDaysLeft } from '../dates';
-import Modal from '../components/Modal';
 
 // TODO Check if this is the correct way to do in ts
 
@@ -132,10 +131,6 @@ function App() {
                             )}
                             <Countdown dueDate={todo.due_date} />
                         </div>
-
-                        {/* <Modal>
-                            <div id="hi">HELLO</div>
-                        </Modal> */}
                     </div>
                 ))}
             </div>

@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { getCurrentDate } from '../dates';
+import Modal from './Modal';
+import ShowModalBtn from './ShowModalBtn';
+import HideModalBtn from './HideModalBtn';
 
 interface CreateTodoProps {
     createTodo: (
@@ -16,7 +19,6 @@ export default function CreateTodo({ createTodo }: CreateTodoProps) {
     const [description, setDescription] = useState('');
     const [dueDate, setDueDate] = useState(getCurrentDate());
     const [formVisible, setFormVisible] = useState(false);
-    const [showBtnVisible, setShowBtnVisible] = useState(true);
 
     async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -27,7 +29,6 @@ export default function CreateTodo({ createTodo }: CreateTodoProps) {
     }
 
     function handleClick() {
-        setShowBtnVisible(false);
         setFormVisible(true);
     }
 
@@ -37,21 +38,25 @@ export default function CreateTodo({ createTodo }: CreateTodoProps) {
         setDueDate(getCurrentDate());
     }
 
+    function handleHideModal() {
+        setFormVisible(false);
+        clearForm();
+    }
+
     return (
         <div id="create-todo-container">
-            {showBtnVisible && (
-                <button id="show-create-form-btn" onClick={() => handleClick()}>
-                    Create New Todo
-                </button>
-            )}
-            {formVisible && (
+            <ShowModalBtn
+                text="Create New Todo"
+                id="show-create-form-btn"
+                onClick={handleClick}
+            />
+            <Modal visible={formVisible}>
                 <form
                     id="create-todo-form"
                     action=""
                     onSubmit={(e) => {
                         handleSubmit(e);
                         setFormVisible(false);
-                        setShowBtnVisible(true);
                     }}
                 >
                     <label htmlFor="name">Title</label>
@@ -82,19 +87,13 @@ export default function CreateTodo({ createTodo }: CreateTodoProps) {
                     <button type="submit" id="create-todo-submit">
                         Create Todo
                     </button>
-                    <button
+                    <HideModalBtn
+                        text="Cancel"
                         className="cancel-btn"
-                        onClick={() => {
-                            setFormVisible(false);
-                            setShowBtnVisible(true);
-                            clearForm();
-                        }}
-                        type="reset"
-                    >
-                        Cancel
-                    </button>
+                        onClick={handleHideModal}
+                    />
                 </form>
-            )}
+            </Modal>
         </div>
     );
 }
