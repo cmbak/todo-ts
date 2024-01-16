@@ -13,6 +13,7 @@ export default function Modal({ children }: ModalProps) {
                 <div className="modal-content">{children}</div>
             </div>
             {/* {props.children} */}
+            <div className="overlay active"></div>
         </div>
     );
 }

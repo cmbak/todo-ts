@@ -24,7 +24,6 @@ export default function EditModal({ todo, editTodo }: EditModalProps) {
     const [name, setName] = useState(todo.name);
     const [description, setDescription] = useState(todo.description || ''); // Need ''?
     const [dueDate, setDueDate] = useState(splitTDate(todo.due_date));
-    const [display, setDisplay] = useState(false);
 
     async function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -37,11 +36,11 @@ export default function EditModal({ todo, editTodo }: EditModalProps) {
     }
 
     function handleShowClick() {
-        setDisplay(true);
+        setVisible(true);
     }
 
     function closeModal() {
-        setDisplay(false);
+        setVisible(false);
     }
 
     return (
