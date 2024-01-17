@@ -21,8 +21,6 @@ export interface Todo {
 
 function App() {
     const [todos, setTodos] = useState<Array<Todo>>([]);
-
-    // TODO does this need to be async?
     async function getTodos() {
         try {
             const response = await fetch('http://localhost:3000/todos/'); // TODO correct way of using it
@@ -105,8 +103,10 @@ function App() {
 
     return (
         <div className="container">
-            <h1 id="title">Todo</h1>
-            <CreateTodo createTodo={createTodo} />
+            <div className="header">
+                <h1 id="title">Todo List</h1>
+                <CreateTodo createTodo={createTodo} />
+            </div>
             <div className="todo-container">
                 {todos.map((todo) => (
                     <div key={todo.todo_id} className="todo-item">
